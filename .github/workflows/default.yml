@@ -21,10 +21,18 @@ jobs:
           SFDX_AUTH_URL_DEVHUB: ${{ secrets.SFDX_AUTH_URL_DEVHUB }}
         run: |
           echo "${SFDX_AUTH_URL_DEVHUB}" | sf org login sfdx-url --set-default-dev-hub --sfdx-url-stdin
-          npm run develop
-      - name: Reproduce Issue
+          ./scripts/develop.sh
+      - name: "Reproduce Issue: fail when output does contain a line starting with Greeter against expectations"
         run: |
-          echo "hi"
+          sf apex run test --test-level RunLocalTests --code-coverage --wait 10 | tee /dev/stderr | grep -q -v "^Greeter"
+      - name: Workaround
+        if: always()
+        run: |
+          ./scripts/query-aggregated-code-coverage.sh | ./scripts/format-aggregated-code-coverage.mjs
+      - name: Show with default ApexSettings for comparison
+        run: |
+          sf project deploy start -d sfdx-source/disable-aggregated-code-coverage
+          sf apex run test --test-level RunLocalTests --code-coverage --wait 10
       - name: Delete scratch org
         if: always()
         run: |
