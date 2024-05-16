@@ -58,6 +58,65 @@ Test_Greeter.greet  Pass              9
 - Greeter  100%
 ```
 
+and using `--json`:
+
+```json
+{
+  "status": 0,
+  "result": {
+    "summary": {
+      "failRate": "0%",
+      "failing": 0,
+      "hostname": "https://drive-customer-3519-dev-ed.scratch.my.salesforce.com",
+      "orgId": "00D7Y000000GND2UAO",
+      "outcome": "Passed",
+      "passRate": "100%",
+      "passing": 1,
+      "skipped": 0,
+      "testRunId": "7077Y00004lsqtT",
+      "testStartTime": "2024-05-16T15:47:34.000Z",
+      "testsRan": 1,
+      "userId": "0057Y00000CFK0HQAX",
+      "username": "test-8nhp9pk7g82s@example.com",
+      "commandTime": "83 ms",
+      "testExecutionTime": "16 ms",
+      "testTotalTime": "16 ms",
+      "orgWideCoverage": "100%",
+      "testRunCoverage": "0%"
+    },
+    "tests": [
+      {
+        "Id": "07M7Y00000OLYuLUAX",
+        "QueueItemId": "7097Y000002jGN4QAM",
+        "StackTrace": null,
+        "Message": null,
+        "AsyncApexJobId": "7077Y00004lsqtTQAQ",
+        "MethodName": "greet",
+        "Outcome": "Pass",
+        "ApexClass": {
+          "Id": "01p7Y00000FfRORQA3",
+          "Name": "Test_Greeter",
+          "NamespacePrefix": null
+        },
+        "RunTime": 16,
+        "FullName": "Test_Greeter.greet"
+      }
+    ],
+    "coverage": {
+      "coverage": [],
+      "records": [],
+      "summary": {
+        "totalLines": 0,
+        "coveredLines": 0,
+        "orgWideCoverage": "100%",
+        "testRunCoverage": "0%"
+      }
+    }
+  },
+  "warnings": []
+}
+```
+
 ## Workaround
 
 We can query and format the Apex Code Coverage by Class (with "Store Only Aggregated Code Coverage" enabled)
