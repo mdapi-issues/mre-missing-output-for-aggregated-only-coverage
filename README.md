@@ -67,7 +67,7 @@ using the Tooling API (`SELECT ApexClassOrTrigger.Name, NumLinesCovered, NumLine
 
 > [!NOTE]
 >
-> "Store Only Aggregated Code Coverage" is enabled in `config/project-scratch-def.json`.
+> "Store Only Aggregated Code Coverage" is enabled in [config/project-scratch-def.json](./config/project-scratch-def.json).
 
 ```console
 sf org create scratch -f config/project-scratch-def.json --alias mre-missing-output-for-aggregated-only-coverage --set-default
